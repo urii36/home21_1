@@ -3,7 +3,14 @@ from django import forms
 from catalog.models import Version, Product
 
 
-class ProductForm(forms.ModelForm):
+class StyleFormMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class ProductForm(StyleFormMixin, forms.ModelForm):
     forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
     version = forms.ModelChoiceField(queryset=Version.objects.all(), required=False, empty_label="Выберите версию")
 
@@ -29,7 +36,7 @@ def clean_description(self):
     return description
 
 
-class VersionForm(forms.ModelForm):
+class VersionForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Version
         fields = ['version_number', 'version_name', 'is_active']
