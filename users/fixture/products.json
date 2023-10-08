@@ -1,0 +1,106 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Базовая",
+      "description": "здесь будет находится описание подписки базовая",
+      "image": "products_images/basic.gif",
+      "category": 1,
+      "price": "30.00",
+      "created_at": "2023-09-14T12:46:33.794Z",
+      "last_modified": "2023-09-14T13:24:58.716Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Премиальная",
+      "description": "Здесь будет находится описание подписки премиум",
+      "image": "products_images/premium.gif",
+      "category": 1,
+      "price": "100.00",
+      "created_at": "2023-09-14T12:46:33.796Z",
+      "last_modified": "2023-09-14T12:46:33.796Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Персональная",
+      "description": "Здесь будет находится описание подписки персонал",
+      "image": "products_images/personal.gif",
+      "category": 1,
+      "price": "159.00",
+      "created_at": "2023-09-14T12:46:33.797Z",
+      "last_modified": "2023-09-14T12:46:33.797Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Элит",
+      "description": "Здесь будет находится описание подписки элит",
+      "image": "products_images/elite.gif",
+      "category": 1,
+      "price": "250.00",
+      "created_at": "2023-09-14T12:46:33.798Z",
+      "last_modified": "2023-09-14T12:46:33.798Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Элит плюс",
+      "description": "Здесь будет находится описание подписки элит+",
+      "image": "products_images/super-elite.gif",
+      "category": 1,
+      "price": "300.00",
+      "created_at": "2023-09-14T12:46:33.799Z",
+      "last_modified": "2023-09-14T12:46:33.799Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "python",
+      "description": "здесь будет находится описание по помощи с python кодом",
+      "image": "products_images/python.gif",
+      "category": 2,
+      "price": "99.99",
+      "created_at": "2023-09-14T12:46:33.799Z",
+      "last_modified": "2023-09-14T13:45:25.843Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "c-sharp",
+      "description": "здесь будет описание помощи по коду с#",
+      "image": "products_images/C.gif",
+      "category": 2,
+      "price": "99.99",
+      "created_at": "2023-09-14T12:46:33.800Z",
+      "last_modified": "2023-09-14T13:45:02.149Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "javascrypt",
+      "description": "здесь будет находится описание по помощи с js кодом",
+      "image": "products_images/js_Am47hhY.gif",
+      "category": 2,
+      "price": "99.99",
+      "created_at": "2023-09-14T14:23:29.784Z",
+      "last_modified": "2023-09-14T14:23:29.789Z"
+    }
+  }
+]

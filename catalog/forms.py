@@ -39,4 +39,4 @@ def clean_description(self):
 class VersionForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Version
-        fields = ['version_number', 'version_name', 'is_active']
+        fields = ['number', 'name', 'is_active']
