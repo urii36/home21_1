@@ -85,18 +85,4 @@ def contacts(request):
     return render(request, "catalog/contacts.html", context)
 
 
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'catalog/product_detail.html'
-    context_object_name = 'product'
 
-    def get_object(self, queryset=None):
-        name = self.kwargs.get('name')
-        return get_object_or_404(Product, name=name)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        product = self.object
-        product.active_version = product.versions.filter(is_active=True).first()
-        context['product'] = product
-        return context
