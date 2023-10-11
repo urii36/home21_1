@@ -1,9 +1,10 @@
 from django.conf import settings
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
-from django.views.generic import CreateView, UpdateView, TemplateView, FormView
+from django.views.generic import CreateView, UpdateView, TemplateView
+from django.views.generic.edit import FormView
 
 from users.forms import UserRegisterForm, UserProfileForm, PasswordRecoveryForm
 from users.models import User, EmailVerification
@@ -13,13 +14,13 @@ class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
     template_name = 'users/register.html'
-    success_url = reverse_lazy("user:login")
+    success_url = reverse_lazy("users:login")
 
 
 class ProfileView(UpdateView):
     model = User
     form_class = UserProfileForm
-    success_url = reverse_lazy("user:profile")
+    success_url = reverse_lazy("users:profile")
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -43,7 +44,7 @@ class EmailVerificationView(TemplateView):
 class PasswordRecoveryView(FormView):
     template_name = 'users/password_recovery.html'
     form_class = PasswordRecoveryForm
-    success_url = reverse_lazy('user:login')
+    success_url = reverse_lazy('users:login')
 
     def form_valid(self, form):
         email = form.cleaned_data['email']

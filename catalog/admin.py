@@ -15,8 +15,9 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description',)
 
 
+@admin.register(Version)
+class VersionAdmin(admin.ModelAdmin):
+    list_display = "pk", "get_product_names", "number", "name", "is_active"
 
-
-
-
-
+    def get_product_names(self, obj):
+        return '; '.join([product.name for product in obj.products.all()])

@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DOMAIN_NAME = 'http://127.0.0.1:8000/'
+
 
 # Application definition
 
@@ -137,10 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
-EMAIL_USE_SSL = False
+EMAIL_HOST_USER = "kazan313131@gmail.com"
+EMAIL_HOST_PASSWORD = "lqpv hiqy rjzv jsdm"
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
