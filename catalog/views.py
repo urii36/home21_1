@@ -1,7 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import formset_factory
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product
@@ -21,7 +23,7 @@ class ProductListView(ListView):
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = '/'
@@ -56,7 +58,7 @@ class ProductDetailView(DetailView):
         return context
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     context_object_name = 'product'
@@ -73,6 +75,20 @@ class ProductUpdateView(UpdateView):
         return context
 
 
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    model = Product
+    context_object_name = 'product'
+    success_url = reverse_lazy("catalog:product_list")
+
+    def get_object(self, queryset=None):
+        name = self.kwargs.get('name')
+        product = get_object_or_404(Product, name=name)
+        if product.owner != self.request.user:
+            raise Http404
+
+        return product
+
+
 def contacts(request):
     context = {
         'title': 'Contacts',
@@ -83,6 +99,3 @@ def contacts(request):
         message = request.POST.get('message')
         print(f'{name} ({phone}) {message}')
     return render(request, "catalog/contacts.html", context)
-
-
-
